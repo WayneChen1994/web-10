@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.js" charset="utf-8"></script>
+    <style type="text/css">
+        p{
+            height: 50px;
+            width: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    1、页面加载完毕之后响应的事件
+    $(document).ready(function(){})
+    $().ready(function(){})
+    $(function(){})
+-----------------------------------------------------------------
+    2、bind(type, [data], func)
+    参数一：事件类型
+    参数二：可传递的参数，event.data
+    参数三：绑定的事件函数
+-----------------------------------------------------------------
+    3、解除绑定事件
+    unbind(type)
+    
+    一个对象可以绑定多种事件类型，解除绑定的时候，我们需要指明解除绑定的事件类型
+-----------------------------------------------------------------
+    
+    <div id="box">
+        <p>aaa</p>
+        <p>bbb</p>
+        <p>ccc</p>
+        <p>ddd</p>
+        <p>eee</p>
+    </div>
+    
+    <button onclick="jiebang()">解除绑定事件</button>
+    
+    <script type="text/javascript">
+        $("#box p").bind("click", function () {
+           alert($(this).text());
+        });
+        
+        $("#box p").bind("mouseover", function () {
+           console.log("hello");
+        });
+        
+        $("#box p").append('<span>good</span>');
+        
+        function jiebang(){
+            $("#box p").unbind("click");
+        }
+        
+        // for (var i=0; i<=5; i++){
+        //     $("#box").append($('<p>' + i + '</p>'));
+        // }
+    </script>
+</body>
+</html>

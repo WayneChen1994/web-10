@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>事件2</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.js" charset="utf-8"></script>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            width: 120px;
+            height: 50px;
+            background: red;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        #box{
+            width: 100%;
+            height: 100%;
+            background: palegreen;
+            position: relative;
+        }
+        #smallbox{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="smallbox"></div>
+    </div>
+
+    <script type="text/javascript">
+        var sheight = window.innerHeight;
+        var swidth = window.innerWidth;
+        console.log(sheight);
+        console.log(swidth);
+        
+        // for (var i=0; i<=5; i++){
+        //     $("#box").append($('<p>' + i + '</p>'))
+        // }
+        //
+        // $("#box p").on("click", function () {
+        //     alert($(this).text());
+        // });
+        
+        var startY, endY, moveY, startX, endX, moveX;
+        var left2 = 0;
+        var top2 = 0;
+        
+        $("#box").on("touchstart touchend touchmove", function (e) {
+            switch (e.type) {
+                case "touchstart":
+                    startY = e.originalEvent.targetTouches[0].clientY;
+                    startX = e.originalEvent.targetTouches[0].clientX;
+                    break;
+                case "touchmove":
+                    endY = e.originalEvent.targetTouches[0].clientY;
+                    endX = e.originalEvent.targetTouches[0].clientX;
+                    break;
+                case "touchend":
+                    moveY = endY - startY;
+                    moveX = endX - startX;
+                    if (moveY < 0 && top2 < Math.abs(moveY)){
+                        return;
+                    }
+                    if (top2 > sheight){
+                        return;
+                    }
+                    if (left2 > swidth || left2 < 0){
+                        return;
+                    }
+                    left2 += moveX;
+                    top2 += moveY;
+                    $("#smallbox").css({
+                        "left": left2+"px",
+                        "top": top2+"px"
+                    });
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

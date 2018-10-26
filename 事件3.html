@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>事件3</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.js" charset="utf-8"></script>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    绑定事件：
+    $("选择器").on("事件类型", function(e){})
+    
+    解绑事件：
+    $("选择器").off("事件类型")
+    
+    只执行一次的事件.one("事件类型", function(){})
+    
+------------------------------------------------------------------
+    
+    <div id="box">
+    
+    </div>
+    
+    <button onclick="jiebang()">解除事件绑定</button>
+    
+    <script type="text/javascript">
+        // $("#box").on("click", function () {
+        //    alert("hello");
+        // });
+        // function jiebang() {
+        //     $("#box").off("click");
+        // }
+        //
+        // $("#box").one("click", function () {
+        //     alert("good");
+        // });
+        
+        // 练习：模仿hover事件
+        // 鼠标经过的时候，背景颜色变为蓝色
+        // 鼠标离开恢复为红色
+        
+        $("#box").on("mouseover", function () {
+           $(this).css("background", "blue")
+        }).on("mouseout", function(){
+            $(this).css("background", "red");
+        });
+
+        // $("#box").on("mouseout", function () {
+        //     $(this).css("background", "red");
+        // });
+    </script>
+</body>
+</html>

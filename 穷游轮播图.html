@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>穷游网轮播图</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.js" charset=""utf-8></script>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #imgbox{
+            width: 640px;
+            height: 213.3px;
+            margin: 50px auto;
+            position: relative;
+        }
+        #imgbox img{
+            display: block;
+            height: 100%;
+            position: absolute;
+        }
+        #imgbox button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 36px;
+            font-weight: bolder;
+            position: absolute;
+            color: white;
+            background: rgba(0,0,0,0.9);
+            border: none;
+            outline: none;
+            left: 20px;
+            top: 81.65px;
+            z-index: 2;
+        }
+        .showUp{
+            z-index: 1;
+            width: 0%;
+        }
+    </style>
+</head>
+<body>
+    <div id="imgbox">
+        <button onclick="lunbo()">&gt;</button>
+    </div>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var imgsArr = ["img/banner1.jpg", "img/banner2.jpg", "img/banner3.jpg"];
+            for (var i in imgsArr){
+                var $image = $('<img src="' + imgsArr[i] + '"/>');
+                $("#imgbox").prepend($image);
+            }
+        });
+        
+        var index = 0;
+        function lunbo() {
+            $img = $("#imgbox img:eq("+ index +")");
+            $img.siblings().removeClass("showUp");
+            $img.addClass("showUp").animate({"width": "100%"}, 1500, function () {
+               $img.siblings().css("width", "0%");
+               $("#imgbox button").css("width", "50px");
+            });
+            index = ++index%3;
+        }
+        
+        setInterval(function () {
+            $("#imgbox button").click();
+        }, 2000);
+    </script>
+</body>
+</html>
