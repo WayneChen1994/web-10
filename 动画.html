@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.js" charset="utf-8"></script>
+    <style type="text/css">
+        #box{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    1、隐藏和显示
+    $("选择器").hide(time)
+    功能：将我们选中的元素隐藏
+    
+    $("选择器").show(time)
+    功能：将我们选中的元素显示
+    
+    注意：time的单位是ms，当我们传入time的时候，才会出现过渡动画的效果
+--------------------------------------------------
+    2、切换可见状态
+    $("选择器").toggle(time)
+    功能：此函数为hide与show的综合体，若选中的元素为可见状态，则将其隐藏，若为隐藏的状态，则将其显示
+--------------------------------------------------
+    3、淡入淡出【透明度变化】
+    淡入：全透明 --> 不透明并且显示
+    $("选择器").fadeIn(time)
+    
+    淡出：不透明 --> 全透明并且隐藏
+    $("选择器").fadeOut(time)
+--------------------------------------------------
+    4、滑动显示/隐藏
+    a. 滑动显示
+    $("选择器").slideDown(time)
+    
+    b. 滑动隐藏
+    $("选择器").slideUp(time)
+    
+    c. 滑动切换状态
+    $("选择器").slideToggle(time)
+--------------------------------------------------
+    
+    <div id="box"></div>
+    
+    <button onclick="yichang()">隐藏</button>
+    <button onclick="xianshi()">显示</button>
+    <button onclick="qiehuan()">切换可见状态</button>
+    <button onclick="danru()">淡入</button>
+    <button onclick="danchu()">淡出</button>
+    <button onclick="slideshow()">滑动显示</button>
+    <button onclick="slidehide()">滑动隐藏</button>
+    <button onclick="slide()">滑动切换</button>
+    
+    <script type="text/javascript">
+        function yichang() {
+            $("#box").hide(1000);
+        }
+        
+        function xianshi() {
+            $("#box").show(1000);
+        }
+        
+        function qiehuan() {
+            $("#box").toggle(1000);
+        }
+        
+        function danru() {
+            $("#box").fadeIn(2000);
+        }
+        
+        function danchu() {
+            $("#box").fadeOut(2000);
+        }
+        
+        function slideshow() {
+            $("#box").slideDown(1000);
+        }
+        
+        function slidehide() {
+            $("#box").slideUp(1000);
+        }
+        
+        function slide() {
+            $("#box").slideToggle(1000);
+        }
+    </script>
+</body>
+</html>
